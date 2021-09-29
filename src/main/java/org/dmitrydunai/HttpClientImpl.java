@@ -1,10 +1,16 @@
 package org.dmitrydunai;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Data
+@AllArgsConstructor
 public class HttpClientImpl implements HttpClient{
 
     @Override
@@ -14,32 +20,32 @@ public class HttpClientImpl implements HttpClient{
 
     @Override
     public Response post(String url, Map<String, String> headers, byte[] payload) {
-        return null;
+        return connection("post", url, headers, payload);
     }
 
     @Override
     public Response post(String url, Map<String, String> headers, String payload) {
-        return null;
+        return connection("post", url, headers, payload.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
     public Response put(String url, Map<String, String> headers, byte[] payload) {
-        return null;
+        return connection("put", url, headers, payload);
     }
 
     @Override
     public Response put(String url, Map<String, String> headers, String payload) {
-        return null;
+        return connection("put", url, headers, payload.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
     public Response delete(String url, Map<String, String> headers, byte[] payload) {
-        return null;
+        return connection("delete", url, headers, payload);
     }
 
     @Override
     public Response delete(String url, Map<String, String> headers, String payload) {
-        return null;
+        return connection("delete", url, headers, payload.getBytes(StandardCharsets.UTF_8));
     }
 
     private Map<String, String> headerTransformer(Map<String, List<String>> headerFields) {
